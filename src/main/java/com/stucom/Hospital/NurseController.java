@@ -46,17 +46,13 @@ public class NurseController {
         logger.warn("Error in login");
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(false);
     }
+	@GetMapping("nurse/index")
+	public @ResponseBody ResponseEntity<Iterable<Nurse>> getAll() {
+	    // Coger todos los enfermeros
+	    Iterable<Nurse> nurses = nurseRepository.findAll();
 
-
-    public ResponseEntity<Nurse> findByName(@PathVariable String name) {
-        Optional<Nurse> result = nurses.stream()
-                .filter(n -> n.getName().toLowerCase().contains(name.toLowerCase()))
-                .findFirst();
-
-        if (result.isPresent()) {
-            return ResponseEntity.ok(result.get());
-        }
-
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-    }
+	    // Devolverlos todos
+	    return ResponseEntity.ok(nurses);
+	}
+	
 }
