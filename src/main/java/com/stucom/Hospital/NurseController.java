@@ -17,7 +17,6 @@ public class NurseController{
     Logger.warn("Error in login");
     return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(false);
     }
-
 	@GetMapping("nurse/index")
 	public @ResponseBody ResponseEntity<Iterable<Nurse>> getAll() {
 	    // Coger todos los enfermeros
@@ -26,4 +25,5 @@ public class NurseController{
 	    // Devolverlos todos
 	    return ResponseEntity.ok(nurses);
 	}
+	
 }
