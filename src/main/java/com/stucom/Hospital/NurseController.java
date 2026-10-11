@@ -47,7 +47,7 @@ public class NurseController {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(false);
     }
 
-
+    @GetMapping("/name/{name}")
     public ResponseEntity<Nurse> findByName(@PathVariable String name) {
         Optional<Nurse> result = nurses.stream()
                 .filter(n -> n.getName().toLowerCase().contains(name.toLowerCase()))
