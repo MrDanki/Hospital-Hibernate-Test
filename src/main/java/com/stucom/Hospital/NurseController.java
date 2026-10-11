@@ -18,4 +18,12 @@ public class NurseController{
     return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(false);
     }
 
+	@GetMapping("nurse/index")
+	public @ResponseBody ResponseEntity<Iterable<Nurse>> getAll() {
+	    // Coger todos los enfermeros
+	    Iterable<Nurse> nurses = nurseRepository.findAll();
+
+	    // Devolverlos todos
+	    return ResponseEntity.ok(nurses);
+	}
 }
