@@ -2,6 +2,7 @@ package com.stucom.Hospital;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -34,12 +35,11 @@ public class NurseController {
 
     @PostMapping("/login")
     public ResponseEntity<Boolean> login(@RequestBody Nurse inputNurse) {
-        Optional<Nurse> nurseLogin = nurses.stream()
-                .filter(n -> n.getUser().equals(inputNurse.getUser())
-                        && n.getPassword().equals(inputNurse.getPassword()))
-                .findFirst();
+        boolean ok = nurses.stream()
+                .anyMatch(n -> Objects.equals(n.getUser(), inputNurse.getUser())
+                        && Objects.equals(n.getPassword(), inputNurse.getPassword()));
 
-        if (nurseLogin.isPresent()) {
+        if (ok) {
             return ResponseEntity.ok(true);
         }
 
