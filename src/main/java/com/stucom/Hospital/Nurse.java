@@ -1,48 +1,54 @@
 package com.stucom.Hospital;
-
-import jakarta.persistence.*;
-
+ 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+ 
 @Entity
-@Table(name = "Nurse")
+@Table(name = "nurses")
 
 public class Nurse {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "NurseID")
-    private int id;
+ 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer ID;
+ 
+	@JsonProperty("name")
+	@Column(name = "name", nullable = false, length = 150)
+	private String NAME;
+ 
+	@JsonProperty("user")
+	@Column(name = "user", nullable = false, unique = true, length = 50)
+	private String USER;
+ 
+	@Column(name = "password", nullable = false, length = 255)
+	private String PASSWORD;
+ 
+	public Nurse(Integer id,String name,String user,String password){
+        this.ID = id;
+        this.NAME = name;
+        this.USER = user;
+        this.PASSWORD = password;
+    }
+ 
+	public Integer getID(){return ID;}
+    public String getName(){return NAME;}
+    public String getUser(){return USER;}
+    public String getPassword(){return PASSWORD;}
 
-    @Column(name = "Name")
-    private String name;
+	public void setIDd(Integer id){this.ID = id;}
+	public void setNombreCompleto(String name){this.NAME = name;}
+	public void setNombreUsuario(String user) {this.USER = user;}
+	public void setContrasena(String password){this.PASSWORD = password;}
 
-    @Column(name = "User")
-    private String user;
-
-    @Column(name = "Password")
-    private String password;
-
-    // Constructor vacío obligatorio para JPA
-    public Nurse() {
+    @Override 
+    public String toString(){
+        return "["+ NAME+","+USER+","+PASSWORD+"]";
     }
 
-    public Nurse(int id, String name, String user, String password) {
-        this.id = id;
-        this.name = name;
-        this.user = user;
-        this.password = password;
-    }
-
-    // getters y setters igual que ya los tienes
-
-	public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-    public String getUser() { return user; }
-    public void setUser(String user) { this.user = user; }
-
-    public String getPassword() { return password; }
-    public void setPassword(String password) { this.password = password; }
 }
+ 
