@@ -22,14 +22,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class NurseController {
 
     private static final Logger logger = LoggerFactory.getLogger(NurseController.class);
-
     private static final List<Nurse> nurses = new ArrayList<>();
-
 
     public static void NurseTest(){
 
-        nurses.add(new Nurse(1,"Jeffrey Kapplan","jeff","1234"));
-        nurses.add(new Nurse(1,"Maximov Viacheslav","maxim","1234"));
+        nurses.add(new Nurse("Jeffrey Kapplan","jeff","1234"));
+        nurses.add(new Nurse("Maximov Viacheslav","maxim","1234"));
 
 		for(Nurse n : nurses){
             System.out.println(n.toString());

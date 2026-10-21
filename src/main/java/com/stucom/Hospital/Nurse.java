@@ -28,8 +28,7 @@ public class Nurse {
 	@Column(name = "password", nullable = false, length = 255)
 	private String PASSWORD;
  
-	public Nurse(Integer id,String name,String user,String password){
-        this.ID = id;
+	public Nurse(String name,String user,String password){
         this.NAME = name;
         this.USER = user;
         this.PASSWORD = password;
