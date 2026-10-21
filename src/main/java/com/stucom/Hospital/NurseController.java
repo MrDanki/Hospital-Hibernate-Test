@@ -23,16 +23,16 @@ public class NurseController {
 
     private static final Logger logger = LoggerFactory.getLogger(NurseController.class);
 
-    private static final List<Nurse> nurses = new ArrayList<>(List.of(
-            new Nurse(1,"Jeffrey Kapplan","jeff","1234"),
-            new Nurse(1,"Maximov Viacheslav","maxim","1234")
-    ));
+    private static final List<Nurse> nurses = new ArrayList<>();
 
 
-    public static void main(String[]args){
+    public static void NurseTest(){
+
+        nurses.add(new Nurse(1,"Jeffrey Kapplan","jeff","1234"));
+        nurses.add(new Nurse(1,"Maximov Viacheslav","maxim","1234"));
 
 		for(Nurse n : nurses){
-            n.toString();
+            System.out.println(n.toString());
 
         }
 	}
