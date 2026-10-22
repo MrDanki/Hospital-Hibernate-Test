@@ -28,6 +28,8 @@ public class Nurse {
 	@Column(name = "password", nullable = false, length = 255)
 	private String PASSWORD;
  
+    public Nurse(){}
+    
 	public Nurse(String name,String user,String password){
         this.NAME = name;
         this.USER = user;

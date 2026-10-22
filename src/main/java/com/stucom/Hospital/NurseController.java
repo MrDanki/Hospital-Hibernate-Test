@@ -31,7 +31,6 @@ public class NurseController {
 
 		for(Nurse n : nurses){
             System.out.println(n.toString());
-
         }
 	}
 
